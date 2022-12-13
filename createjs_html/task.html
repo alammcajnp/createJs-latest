@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canvas experiment</title>
+    <script type="application/javascript">
+     function draw() {
+      const canvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+        const ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = "green";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.lineWidth = 10;
+        ctx.arc(canvas.width / 2, canvas.height / 2, 50, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        let tempCanvas = document.createElement("canvas");
+        let tempContext = tempCanvas.getContext("2d");
+        tempContext.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
+        ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+        
+        // A simple Bezier curve
+        // ctx.beginPath();
+        // ctx.moveTo(30, 30);
+        // ctx.bezierCurveTo(120,160, 180,10, 220,140);
+        // ctx.stroke();
+
+        // Cubic Bézier curve
+        // let start = { x: 50,    y: 20  };
+        // let cp1 =   { x: 230,   y: 30  };
+        // let cp2 =   { x: 150,   y: 80  };
+        // let end =   { x: 250,   y: 100 }; 
+
+        // ctx.beginPath();
+        // ctx.moveTo(start.x, start.y);
+        // ctx.bezierCurveTo(cp1.x, cp1.y, cp2.x, cp2.y, end.x, end.y);
+        // ctx.stroke();
+
+        // // Start and end points
+        // ctx.fillStyle = 'blue';
+        // ctx.beginPath();
+        // ctx.arc(start.x, start.y, 5, 0, 2 * Math.PI);  // Start point
+        // ctx.arc(end.x, end.y, 5, 0, 2 * Math.PI);      // End point
+        // ctx.fill();
+
+        // // Control points
+        // ctx.fillStyle = 'red';
+        // ctx.beginPath();
+        // ctx.arc(cp1.x, cp1.y, 5, 0, 2 * Math.PI);  // Control point one
+        // ctx.arc(cp2.x, cp2.y, 5, 0, 2 * Math.PI);  // Control point two
+        // ctx.fill();
+
+        //Draw rectangle and circle
+        // const rectangle = new Path2D();
+        // rectangle.rect(10, 10, 50, 50); 
+        // const circle = new Path2D();
+        // circle.arc(100, 35, 25, 0, 2 * Math.PI);
+        // ctx.stroke(rectangle);
+        // ctx.fill(circle);
+
+        // Cubic curves example
+        // ctx.beginPath();
+        // ctx.moveTo(75, 40);
+        // ctx.bezierCurveTo(75, 37, 70, 25, 50, 25);
+        // ctx.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+        // ctx.bezierCurveTo(20, 80, 40, 102, 75, 120);
+        // ctx.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+        // ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+        // ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
+        // ctx.fill();
+
+        // Quadratic curves example
+        // ctx.beginPath();
+        // ctx.moveTo(75, 25);
+        // ctx.quadraticCurveTo(25, 25, 25, 62.5);
+        // ctx.quadraticCurveTo(25, 100, 50, 100);
+        // ctx.quadraticCurveTo(50, 120, 30, 125);
+        // ctx.quadraticCurveTo(60, 120, 65, 100);
+        // ctx.quadraticCurveTo(125, 100, 125, 62.5);
+        // ctx.quadraticCurveTo(125, 25, 75, 25);
+        // ctx.stroke();
+      }
+    }
+    </script>
+  </head>
+  <body onload="draw();">
+    <canvas id="canvas" width="300" height="150"></canvas>
+  </body>
+</html>
